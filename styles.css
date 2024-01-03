@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400;500;700&family=Rubik+Glitch&family=Sevillana&family=Single+Day&family=Slabo+27px&display=swap');
+@import url("https://use.typekit.net/pvj0fkg.css");
+/*font-family: 'Bebas Neue', sans-serif;  normal*
+font-family: 'Dancing Script', cursive;  boudoir*
+font-family: 'Sevillana', cursive;    boudoir*
+font-family: 'Slabo 27px', serif;  normal* 
+font-family: 'rubik glitch', serif; urbano*
+font-family: 'single day', serif; urbano*
+
+FreightBig Pro Book
+font-family: "freight-big-pro", serif;
+font-weight: 400;
+font-style: normal;
+FreightBig Pro Book Italic
+font-family: "freight-big-pro", serif;
+font-weight: 400;
+font-style: italic;
+FreightBig Pro Bold
+font-family: "freight-big-pro", serif;
+font-weight: 700;
+font-style: normal;
+FreightBig Pro Bold Italic
+font-family: "freight-big-pro", serif;
+font-weight: 700;
+font-style: italic;
+*/
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'slabo 27px' , serif;
+    background-color: black;
+    color: aliceblue;
+
+}
+
+img{
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a{
+    color: aliceblue;
+}
+
+p{
+  font-family: "freight-macro-pro", serif;
+font-weight: 500;
+font-style: italic;
+}
+/*welcome*/
+.logo{
+    width: 50rem;
+}
+.img-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+.welcome-txt1{
+    position: absolute;
+    top: 75%;
+    left: 25%;
+}
+
+.welcome-txt2{
+    position: absolute;
+    top: 78%;
+    left: 70%;
+}
+
+.img-welcome{
+    margin-bottom: 2rem;
+    transition: background-color 1s , border-radius 1s, filter 3s, -webkit-transform 2s;
+    overflow:hidden;
+}
+.img-welcome:hover{
+    filter: opacity(0.5) grayscale(50%) blur(5px);
+    /*filter: opacity(.5);         filtro opacidad de 0 a 1 para brillo o sombra                                 */
+    width: 100%;
+   background-color: rgb(0, 0, 0);
+   border-radius: 5rem;
+   box-sizing: border-box;
+   -webkit-transform:scale(1.1);transform:scale(1.1);
+}
+/*Encabezado*/
+.header{
+    background-color: rgba(0, 0, 0, 0.795);
+    padding: 35px 0;
+}
+
+.menu{
+    
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cabezal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+.logo-1{
+    width: 20rem;
+    
+}
+
+.menu .navbar ul li{
+    position: relative;/*para alinear texto*/
+    float: left;
+    
+}
+
+.menu .navbar ul li a{
+    font-size: 16px;
+  padding: 15px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  transition: background-color 0.2s, color 0.2s;
+  
+}
+
+.navbar ul li a:hover {
+    color: #51bfeb9d;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-link{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5rem;
+   
+  }
+
+#menu-icono {
+    display: none;
+  }
+  
+.menu label  {
+    cursor: pointer;
+    display: none;
+  }
+
+  /*pie*/
+  .footer {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    background-color: rgba(240, 248, 255, 0.192);
+    border: 5rem;
+    border-color:rgb(226, 21, 21) ;
+  }
+
+  .link-red{
+    width: 2.5rem;
+    margin: .2rem;
+    
+  }
+
+  .redes{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+  }
+
+  #facebook{
+    transition: background-color 1s, border-radius 5s;
+  }
+
+  #Wpp{
+    transition: background-color 1s, border-radius 5s;
+  }
+
+  #instagram{
+    transition: background-color 1s, border-radius 5s;
+  }
+
+  #facebook:hover{
+    background-color: #0205d3;
+    border-radius: 5rem;
+    box-sizing: border-box;
+  }
+
+  #Wpp:hover{
+    background-color: #2cd302;
+    border-radius: 5rem;
+    box-sizing: border-box;
+  }
+
+  #instagram:hover{
+    background-color: #d3026a;
+    border-radius: 5rem;
+    box-sizing: border-box;
+  }
+
+  .links{
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+  }
+
+  .links .navbar ul li{
+    position: relative;
+    float: left;
+  }
+  
+  .links .navbar ul li a{
+    font-size: 16px;
+  padding: 15px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  transition: background-color 0.2s, color 0.2s;
+  }
+
+  .links .navbar ul li a:hover{
+    color: #51bfeb9d;
+
+  }
+
+  .txt-frase p{
+    font-family: "freight-macro-pro", serif;
+  font-weight: 600;
+  font-style: italic;
+  }
+  /*home*/
+
+  .D- {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .D-galeria {
+    background-color: rgba(240, 248, 255, 0.63);
+  }
+  .D-galeria h2{
+    text-transform: uppercase;
+    font-size: 5rem;
+  }
+  .D-galeria p{
+    font-size: 1.5rem;
+  }
+
+  /*sobre mi*/
+.txt-presentacion h2{
+  font-family: "freight-big-pro", serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 4rem;
+}
+
+  /*Botones*/
+
+  .btn-1{
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 5rem;
+  background-color: transparent;
+  transition: background-color .7s, color 1s;
+  margin-right: 1rem;
+  cursor: pointer;
+  }
+
+  .btn-1:hover{
+    background-color: rgba(0, 0, 0, 0.795);
+    
+
+  }
