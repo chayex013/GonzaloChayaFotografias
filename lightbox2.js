@@ -1,149 +1,122 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const imagenes = document.querySelectorAll('.img-carrusel');
-    const imagenesLight = document.querySelector('.agregar-imagen');
-    const contenedorLight = document.querySelector('.imagen-light');
+    document.addEventListener('DOMContentLoaded', function () {
+        const imagenes = document.querySelectorAll('.img-carrusel');
+        const imagenesLight = document.querySelector('.agregar-imagen');
+        const contenedorLight = document.querySelector('.imagen-light');
+        let indexActual = 0;
 
-    // Creación de flechas izquierda y derecha para lightbox
-    const flechaIzquierda = document.createElement('img');
-    flechaIzquierda.src = 'imagen/PNG/arrow-sm-left-svgrepo-com.svg';
-    flechaIzquierda.classList.add('flecha', 'flecha-izquierda');
+        // Creación de flechas izquierda y derecha para lightbox
+        const flechaIzquierda = document.createElement('img');
+        flechaIzquierda.src = 'imagen/PNG/arrow-sm-left-svgrepo-com.svg';
+        flechaIzquierda.classList.add('flecha', 'flecha-izquierda');
 
-    const flechaDerecha = document.createElement('img');
-    flechaDerecha.src = 'imagen/PNG/arrow-sm-right-svgrepo-com.svg';
-    flechaDerecha.classList.add('flecha', 'flecha-derecha');
+        const flechaDerecha = document.createElement('img');
+        flechaDerecha.src = 'imagen/PNG/arrow-sm-right-svgrepo-com.svg';
+        flechaDerecha.classList.add('flecha', 'flecha-derecha');
 
-    // Agregamos las flechas al contenedor del lightbox
-    contenedorLight.appendChild(flechaIzquierda);
-    contenedorLight.appendChild(flechaDerecha);
+        // Agregamos las flechas al contenedor del lightbox
+        contenedorLight.appendChild(flechaIzquierda);
+        contenedorLight.appendChild(flechaDerecha);
 
-    // Agregamos un evento click a cada imagen del carrusel
-    imagenes.forEach((imagen) => {
-        imagen.addEventListener('click', () => {
-            aparecerImagen(imagen.getAttribute('src'));
+        // Agregamos un evento click a cada imagen del carrusel
+        imagenes.forEach((imagen, index) => {
+            imagen.addEventListener('click', () => {
+                // Obtener la galería específica de la imagen
+                const galeria = obtenerGaleria(imagen);
+                aparecerImagen(imagen.getAttribute('src'), index, galeria);
+            });
         });
-    });
 
-    // Función para mostrar la imagen en el lightbox
-    const aparecerImagen = (imagen) => {
-        imagenesLight.src = imagen;
-        contenedorLight.classList.toggle('show');
-        imagenesLight.classList.toggle('showImage');
+        // Función para obtener la galería específica de la imagen
+        const obtenerGaleria = (imagen) => {
+            // Lógica para determinar la galería de la imagen
+            // Puedes usar clases, atributos, IDs u otra lógica según tu estructura HTML
+            const parentCarousel = imagen.closest('.carousel, .carousel-1');
+            if (parentCarousel) {
+                const galeriaClass = Array.from(parentCarousel.classList).find(className => className !== 'carousel' && className !== 'carousel-1' && className !== 'carousel-2');
+                if (galeriaClass) {
+                    return galeriaClass;
+                }
+            }
 
-        // Selección de flechas y enlaces del carrusel y el pie de página
-        const flechaCarruselNext = document.querySelector('#next-arrow');
-        const flechaCarruselPrev = document.querySelector('#prev-arrow');
-        const flechaCarruselNext1 = document.querySelector('#next-arrow1');
-        const flechaCarruselPrev1 = document.querySelector('#prev-arrow1');
-        const flechaCarruselNext2 = document.querySelector('#next-arrow-2');
-        const flechaCarruselPrev2 = document.querySelector('#prev-arrow-2');
-        const flechaCarruselNext3 = document.querySelector('#next-arrow-2');
-        const flechaCarruselPrev3 = document.querySelector('#prev-arrow-2');
-        const flechaCarruselNext4 = document.querySelector('#next-arrow-2');
-        const flechaCarruselPrev4 = document.querySelector('#prev-arrow-2');
-        const pieLinks = document.querySelector('#navbar');
+            // Si no se puede determinar la galería, devuelve un valor predeterminado o maneja la lógica según tu necesidad.
+            return 'default';
+        };
 
-        // Ocultar flechas y pie de página al mostrar el lightbox
-        if (imagenesLight.classList.contains('showImage')) {
-            flechaCarruselNext.style.display = 'none';
-            flechaCarruselPrev.style.display = 'none';
-            flechaCarruselNext1.style.display = 'none';
-            flechaCarruselPrev1.style.display = 'none';
-            flechaCarruselNext2.style.display = 'none';
-            flechaCarruselPrev2.style.display = 'none';
-            flechaCarruselNext3.style.display = 'none';
-            flechaCarruselPrev3.style.display = 'none';
-            flechaCarruselNext4.style.display = 'none';
-            flechaCarruselPrev4.style.display = 'none';
-            pieLinks.style.display = 'none';
-        } else {
-            // Mostrar flechas y pie de página después de una transición
-            setTimeout(() => {
-                flechaCarruselNext.style.display = 'block';
-                flechaCarruselPrev.style.display = 'block';
-                flechaCarruselNext1.style.display = 'block';
-                flechaCarruselPrev1.style.display = 'block';
-                flechaCarruselNext2.style.display = 'block';
-                flechaCarruselPrev2.style.display = 'block';
-                flechaCarruselNext3.style.display = 'block';
-                flechaCarruselPrev3.style.display = 'block';
-                flechaCarruselNext4.style.display = 'block';
-                flechaCarruselPrev4.style.display = 'block';
-                pieLinks.style.display = 'flex';
-            }, 100);
-        }
-    };
-
-    // Eventos click para las flechas izquierda y derecha del lightbox
-    flechaIzquierda.addEventListener('click', () => cambiarImagen('izquierda'));
-    flechaDerecha.addEventListener('click', () => cambiarImagen('derecha'));
-
-    // Evento click para cerrar el lightbox al hacer clic fuera de la imagen
-    contenedorLight.addEventListener('click', (e) => {
-        if (e.target !== imagenesLight && e.target !== flechaIzquierda && e.target !== flechaDerecha) {
+        // Función para mostrar la imagen en el lightbox
+        const aparecerImagen = (imagen, index, galeria) => {
+            imagenesLight.src = imagen;
             contenedorLight.classList.toggle('show');
             imagenesLight.classList.toggle('showImage');
-        }
-    });
 
-    // Evento de transición para mostrar/ocultar flechas y pie de página
-    imagenesLight.addEventListener('transitionend', () => {
-        const flechaCarruselNext = document.querySelector('#next-arrow');
-        const flechaCarruselPrev = document.querySelector('#prev-arrow');
-        const flechaCarruselNext1 = document.querySelector('#next-arrow1');
-        const flechaCarruselPrev1 = document.querySelector('#prev-arrow1');
-        const flechaCarruselNext2 = document.querySelector('#next-arrow2');
-        const flechaCarruselPrev2 = document.querySelector('#prev-arrow2');
-        const flechaCarruselNext3 = document.querySelector('#next-arrow3');
-        const flechaCarruselPrev3 = document.querySelector('#prev-arrow3');
-        const flechaCarruselNext4 = document.querySelector('#next-arrow4');
-        const flechaCarruselPrev4 = document.querySelector('#prev-arrow4');
-        const pieLinks = document.querySelector('#navbar');
+            // Actualiza el índice actual para la galería específica
+            indexActual = index;
+
+            // Agrega la clase de la galería para mostrar solo en esa galería
+            contenedorLight.classList.add(galeria);
+        };
+
+        
+        // Eventos click para las flechas izquierda y derecha del lightbox
+        flechaIzquierda.addEventListener('click', () => cambiarImagen('izquierda'));
+        flechaDerecha.addEventListener('click', () => cambiarImagen('derecha'));
+
+        // Evento click para cerrar el lightbox al hacer clic fuera de la imagen
+        contenedorLight.addEventListener('click', (e) => {
+            if (e.target !== imagenesLight && e.target !== flechaIzquierda && e.target !== flechaDerecha) {
+                contenedorLight.classList.toggle('show');
+                imagenesLight.classList.toggle('showImage');
+            }
+        });
+
+        // Evento de transición para mostrar/ocultar flechas y pie de página
+        imagenesLight.addEventListener('transitionend', () => {
+          
+            const pieLinks = document.querySelector('#navbar');
 
         if (imagenesLight.classList.contains('showImage')) {
-            flechaCarruselNext.style.display = 'none';
-            flechaCarruselPrev.style.display = 'none';
-            flechaCarruselNext1.style.display = 'none';
-            flechaCarruselPrev1.style.display = 'none';
-            flechaCarruselNext2.style.display = 'none';
-            flechaCarruselPrev2.style.display = 'none';
-            flechaCarruselNext3.style.display = 'none';
-            flechaCarruselPrev3.style.display = 'none';
-            flechaCarruselNext4.style.display = 'none';
-            flechaCarruselPrev4.style.display = 'none';
-            pieLinks.style.display = 'none';
-        } else {
-            flechaCarruselNext.style.display = 'block';
-            flechaCarruselPrev.style.display = 'block';
-            flechaCarruselNext1.style.display = 'block';
-            flechaCarruselPrev1.style.display = 'block';
-            flechaCarruselNext2.style.display = 'block';
-            flechaCarruselPrev2.style.display = 'block';
-            flechaCarruselNext3.style.display = 'block';
-            flechaCarruselPrev3.style.display = 'block';
-            flechaCarruselNext4.style.display = 'block';
-            flechaCarruselPrev4.style.display = 'block';
-            pieLinks.style.display = 'flex';
-        }
+                // Oculta las flechas y el pie de página para la galería específica
+                ocultarElementos( pieLinks);
+            } else {
+                // Muestra las flechas y el pie de página después de la transición
+                mostrarElementos( pieLinks);
+            }
+        });
+
+        
+
+        // Función para cambiar la imagen en el lightbox
+        const cambiarImagen = (direccion) => {
+            if (direccion === 'izquierda') {
+                indexActual--;
+                if (indexActual < 0) {
+                    indexActual = imagenes.length - 1;
+                }
+            } else if (direccion === 'derecha') {
+                indexActual++;
+                if (indexActual >= imagenes.length) {
+                    indexActual = 0;
+                }
+            }
+
+            // Obtener la nueva imagen y actualizar la fuente de la imagen en el lightbox
+            const nuevaImagen = imagenes[indexActual].getAttribute('src');
+            imagenesLight.src = nuevaImagen;
+        };
+        // Función para ocultar elementos
+        const ocultarElementos = (...elementos) => {
+            elementos.forEach(elemento => {
+                if (elemento) {
+                    elemento.style.display = 'none';
+                }
+            });
+        };
+
+        // Función para mostrar elementos
+        const mostrarElementos = (...elementos) => {
+            elementos.forEach(elemento => {
+                if (elemento) {
+                    elemento.style.display = 'block';
+                }
+            });
+        };
     });
-
-    let indexActual = 0;
-
-    // Función para cambiar la imagen en el lightbox
-    const cambiarImagen = (direccion) => {
-        if (direccion === 'izquierda') {
-            indexActual--;
-            if (indexActual < 0) {
-                indexActual = imagenes.length - 1;
-            }
-        } else if (direccion === 'derecha') {
-            indexActual++;
-            if (indexActual >= imagenes.length) {
-                indexActual = 0;
-            }
-        }
-
-        // Obtener la nueva imagen y actualizar la fuente de la imagen en el lightbox
-        const nuevaImagen = imagenes[indexActual].getAttribute('src');
-        imagenesLight.src = nuevaImagen;
-    };
-});

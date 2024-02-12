@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+/* document.addEventListener('DOMContentLoaded', function () {
     
     // Obtener referencia al botón "Ver Más" de Beauty
     const btnVerMasBeauty = document.getElementById('btn-beauty');
@@ -56,19 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         carruselUrban.style.display = 'block';
     });
    
-    
 
-   // const retroceder = function () {
-        // Ocultar los carruseles
-        
-        //carruselBoudoir.style.display = 'none';
-        //carruselFineArt.style.display = 'none';
-        
-        //carruselStreetStyle.style.display = 'none';
-        //carruselUrban.style.display = 'none';
-
-       // galeriaInicial.style.display = 'grid';
-//};
 
 btnRetroceso.addEventListener('click', function () {
     carruselBeauty.style.display = 'none';
@@ -84,46 +72,40 @@ btnRetrocesoLife.addEventListener('click', function () {
     galeriaInicial.style.display = 'grid';
 });
 
+const btnRetrocesoStreet = document.getElementById('btn-retroceso-street');
+btnRetrocesoStreet.addEventListener('click', function () {
     
-    const arrowButtons = document.querySelectorAll('.carrusel-arrow');
-    arrowButtons.forEach(button => {
-        button.addEventListener('click', App.prototype.processingButton);
-    });
+    carruselStreetStyle.style.display = 'none';
+    galeriaInicial.style.display = 'grid';
+});
 
+const btnRetrocesoBoudoir = document.getElementById('btn-retroceso-boudoir');
+btnRetrocesoBoudoir.addEventListener('click', function () {
+    
+    carruselBoudoir.style.display = 'none';
+    galeriaInicial.style.display = 'grid';
 });
 
 
-function App() {}
+const btnRetrocesoFine = document.getElementById('btn-retroceso-fine');
+btnRetrocesoFine.addEventListener('click', function () {
+    
+    carruselFineArt.style.display = 'none';
+    galeriaInicial.style.display = 'grid';
+});
 
-App.prototype.processingButton = function (event) {
-    const btn = event.currentTarget;
-    const carruselList = btn.parentNode;
-    const track = carruselList.querySelector('#track');
-    const carrusel = track.querySelectorAll('.carrusel');
 
-    const carruselWidth = carrusel[0].offsetWidth;
+const btnRetrocesoUrbex= document.getElementById('btn-retroceso-urbex');
+btnRetrocesoUrbex.addEventListener('click', function () {
+    
+    carruselUrban.style.display = 'none';
+    galeriaInicial.style.display = 'grid';
+});
 
-    const trackWidth = track.offsetWidth;
-    const listWidth = carruselList.offsetWidth;
-
-    let leftPosition = parseFloat(window.getComputedStyle(track).getPropertyValue('transform').split(',')[4]) || 0;
-
-    btn.dataset.button == 'prev-arrow'
-        ? prevAction(leftPosition, carruselWidth, track, trackWidth)
-        : nextAction(leftPosition, carruselWidth, track, trackWidth, listWidth);
-};
-
-let prevAction = (leftPosition, carruselWidth, track, trackWidth) => {
-    if (leftPosition < 0) {
-        track.style.transform = `translateX(${leftPosition + carruselWidth}px)`;
-    }
-};
-
-let nextAction = (leftPosition, carruselWidth, track, trackWidth, listWidth) => {
-    if (leftPosition > listWidth - trackWidth) {
-        track.style.transform = `translateX(${leftPosition - carruselWidth}px)`;
-    }
-};
+   
+});
 
 
 
+
+ */
