@@ -80,48 +80,179 @@ font-style: italic;
     margin-top: 2rem;
     margin-bottom: 5rem;
 }
-
-.welcome-txt1{
-    position: absolute;
-    top: 74%;
-    left: 25%;
+.welcome-cont{
+  position: relative;
+  margin: 1rem 0 0 1rem ; 
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  filter: brightness(1);
+  transition: filer 2s ease;
 }
 
+ 
+.welcome-txt1{
+    position: absolute;
+    top: 78%;
+    left: 38%;
+    filter: brightness(0.8);
+    transition: all 1s ease-in-out;
+   }
+@keyframes texto-color {
+  0%{
+    color: #ffffffe9;
+  }
+  30%{
+    color: #dc8f09e9;   
+  }
+  60%{
+    color: #89e9d6e9;
+  }
+  90%{
+    color: #d6778e;
+  }
+  100%{
+    color: #ffffffe9; 
+  }
+
+}
 .welcome-txt1 h2{
   font-size: 3rem;
-  color: rgb(255, 255, 255);
-  background: radial-gradient(circle at top right, #33ffbe31, #ffffff4e 50%, #ff99cc40);
-  padding: 1rem;
-  border-radius: 5rem;
+  color: #ffffff;
   font-family:'Dancing Script' ;
+  text-shadow: 5px 10px 8px  rgba(0, 0, 0, .5);
+  transition: all 1s ease-in-out;
+  animation: texto-color 18s ease 13.5s infinite ;
 }
 
 
 .welcome-txt2{
-    position: absolute;
-    top: 76%;
-    left: 62%;
+    position: relative;
+    left: 42%;
+    transition: all 1s ease-in-out;
+
 }
 
-.welcome-txt2, .btn-1{
+.welcome-txt2, .btn-1 a{
   font-family:'Dancing Script' ;
-  font-size: 30px;
+  font-size: 24px;
+  color: white;
+}
+.cont-txt .welcome-txt2{
+  position: absolute;
+  top: 100%;
+ } 
+@keyframes animacionex{
+
+0%{
+  opacity: 1;
+}
+20%{
+  opacity: 1;
+}
+30%{
+  opacity: 0;
+}  
+90%{
+  opacity: 0;
+}
+100%{
+  opacity: 1;
 }
 
-.img-welcome{
-    margin-bottom: 2rem;
-    transition: background-color 1s , border-radius 1s, filter 3s, -webkit-transform 2s;
-    overflow:hidden;
-    border-radius: 3rem;
 }
-.img-welcome:hover{
-    filter: opacity(0.5) grayscale(50%) blur(5px);
-    /*filter: opacity(.5);         filtro opacidad de 0 a 1 para brillo o sombra                                 */
-    width: 100%;
-   background-color: rgb(0, 0, 0);
-   border-radius: 5rem;
-   box-sizing: border-box;
-   -webkit-transform:scale(1.1);transform:scale(1.1);
+.welcome{
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  background: url(../imagen/Fotos/Bienvenidos.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5rem;
+  animation: animacionex 18s ease-in 13.5s infinite;
+  transition: filter 1s ease;
+}
+.welcome1{
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  background: url(../imagen/Fotos/Bienvenidos-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5rem;
+  animation: animacionex 18s ease-in 9s infinite;
+  transition: filter 1s ease;
+}
+.welcome2{
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  background: url(../imagen/Fotos/Bienvenidos-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5rem;
+  animation: animacionex 18s ease-in 4.5s infinite;
+  transition: filter 1s ease;
+}
+.welcome3{
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  background: url(../imagen/Fotos/Bienvenidos-3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5rem;
+  animation: animacionex 18s ease-in 0s infinite;
+  transition: filter 1s ease;
+}
+
+.welcome-cont:hover{
+  align-items: center;
+}
+.welcome-cont:hover .welcome{
+  filter: brightness(0.5) blur(5px);
+}
+.welcome-cont:hover .welcome1{
+  filter: brightness(0.5) blur(5px);
+}
+.welcome-cont:hover .welcome2{
+  filter: brightness(0.5) blur(5px);
+}
+.welcome-cont:hover .welcome3{
+  filter: brightness(0.5) blur(5px);
+}
+
+.welcome-cont:hover .cont-txt{
+  transform: translateY(0);
+}
+.welcome-cont:hover .welcome-txt1{
+  margin-left:-20%;
+  margin-top: 5rem;
+  filter: brightness(1);
+  }
+.welcome-cont:hover .welcome-txt1 h2{
+font-size: 120px;
+color: rgba(245, 245, 245, 0.375);
+animation: cambio-color 18s infinite ease-out
+}
+.welcome-cont:hover .welcome-txt2{
+  position: absolute;
+  top: 100%;
+  margin-top: 25rem;
+}
+.year{
+position: absolute;
+background: #3e3e3e99;
+top: 100%;
+right: 0;
+margin-top: 5rem;
+width: 100%;
+text-align: center;
+padding: 7px;
 }
 /*Encabezado*/
 .header{
@@ -1268,21 +1399,19 @@ font-style: italic;
   /*Botones*/
 
   .btn-1{
-  font-size: 1.5rem;
-  padding: 1rem;
+  width: 8.3rem;
+  padding: .5rem;
   border-radius: 5rem;
   background: transparent;
-  margin-right: 1rem;
   cursor: pointer;
   border: rgb(132, 132, 132) .5px ridge;
-  transition: background .1s ease-in, width 7s ease-in;
+  transition: background 1s ease-in .8s ;
   }
 
-  .btn-1:hover{
-    background: radial-gradient(circle at top right,#ff99cc94 , #ffffff4e 50%,#33ffbe50 );
-    width: 15rem;
+  .btn-1:hover {
+    background: radial-gradient(circle at top right,#000000e9 , #fcfcfc3c 50%,#212121d2 );
   }
-
+  
     input.btn-2{
       font-size: 1rem;
       padding: .5rem;
@@ -1354,23 +1483,35 @@ font-style: italic;
    .logo{
     width: 25rem;
   }
-  .img-welcome{
-    width: 30rem;
-    transition: width .4s ease-in;
+  .welcome-cont{
+    width: 500px;
+    height: 405px;
   }
-  .img-welcome:hover{
-    width: 33rem;
+  .welcome, .welcome1,
+  .welcome2, .welcome3{
+    width: 500px;
+    height: 400px;
   }
   .welcome-txt1 {
-    top: 41%;
-    left: 14%;
+    top: 70%;
+    left: 21%;
   }
   .welcome-txt1 h2{
-    font-size: 1.5rem;
-    padding: .5rem;
+    font-size: 4rem;
+    padding: .2rem;
   }
-  .welcome-txt2 {
-    top:41%;
+  .cont-txt .welcome-txt2 {
+    top:120%;
+    left: 36%;
+  }
+  .welcome-cont:hover .welcome-txt1{
+    left: 25%;
+  }
+  .welcome-cont:hover .welcome-txt1 h2 {
+    font-size: 100px;
+  }
+  .welcome-cont:hover .welcome-txt2 {
+    margin-top: 15rem;
   }
   .btn-1{
     padding: .5rem;
@@ -1688,21 +1829,32 @@ font-style: italic;
 /* celular */
 @media screen and (max-width: 420px){
   /* index */
-  .img-welcome{
-    width: 23rem;
+  .welcome-cont{
+    width: 380px;
+    height: 310px; 
   }
-  .welcome-txt2,.welcome-txt1{
-    top:30%;
+  .welcome, .welcome1,
+  .welcome2, .welcome3{
+    width: 380px;
+    height: 300px;
   }
   .welcome-txt2 a{
-   font-size: 1rem;
+   font-size: 1.5rem;
+  }
+  .welcome-txt1{
+    top: 66%;
+    left: 17%;
   }
   .welcome-txt1 h2{
-    font-size: 1.5rem;
+    font-size: 57px;
    }
-  .btn-1:hover {
-    width: 8rem;
-  }
+   .welcome-cont:hover .welcome-txt1 h2 {
+    font-size: 77px;
+}
+.cont-txt .welcome-txt2 {
+  left: 33%;
+}
+  
   /* header */
   .logo-1 {
     width: 13rem;
